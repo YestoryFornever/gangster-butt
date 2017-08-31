@@ -23,7 +23,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/api/*',(req, res, next)=>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By", ' 3.2.1');
+  res.header("Content-Type", "application/json;charset=utf-8");
+  res.contentType('json');
+  if (req.method == 'OPTIONS') {
+    res.sendStatus(200); // 让options请求快速返回
+  } else {
+    next();
+  }
+})
+app.use('/api/user', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,3 +57,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+/**
+ * 热部署
+ * 用户登录
+ * redis缓存
+ * 请求加密
+ */
