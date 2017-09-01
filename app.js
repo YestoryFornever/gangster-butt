@@ -58,8 +58,8 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 /**
- * 热部署
  * 用户登录
  * redis缓存
  * 请求加密
+ * #热部署
  */
