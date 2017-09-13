@@ -31,7 +31,6 @@ router.post('/:obj_type/create',(req,res,next)=>{
 	);
 });
 router.get('/:obj_type/read/:id([0-9a-z]+)',(req,res,next)=>{
-	console.log(req.params.id);
 	crud.read(
 		req.params.obj_type,
 		{_id: crud.ObjectID(req.params.id)},

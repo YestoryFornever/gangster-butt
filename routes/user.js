@@ -23,7 +23,7 @@ router.post('/create',(req,res,next)=>{
 		}
 	);
 });
-router.get('/read/:id([0-9]+)',(req,res,next)=>{
+router.get('/read/:id([0-9a-z]+)',(req,res,next)=>{
 	crud.read(
 		"user",
 		{_id: crud.ObjectID(req.params.id)},
@@ -33,7 +33,7 @@ router.get('/read/:id([0-9]+)',(req,res,next)=>{
 		}
 	);
 });
-router.post('/update/:id([0-9]+)',(req,res,next)=>{
+router.post('/update/:id([0-9a-z]+)',(req,res,next)=>{
 	crud.update(
 		"user",
 		{_id: crud.ObjectID(req.params.id)},
@@ -43,7 +43,7 @@ router.post('/update/:id([0-9]+)',(req,res,next)=>{
 		}
 	);
 });
-router.get('/delete/:id([0-9]+)',(req,res,next)=>{
+router.get('/delete/:id([0-9a-z]+)',(req,res,next)=>{
 	crud.delete(
 		"user",
 		{_id: crud.ObjectID(req.params.id)},
