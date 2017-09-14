@@ -19,8 +19,9 @@ router.get('/:obj_type/list',(req,res,next)=>{
 router.post('/:obj_type/create',(req,res,next)=>{
 	crud.create(
 		req.params.obj_type,
-		{_id:crud.ObjectID(req.params.id)},
-		{},
+		Object.assign({
+			create_time:new Date()
+		},req.body),
 		(map_list)=>{
 			res.send({
 				status:200,
