@@ -49,7 +49,9 @@ router.post('/:obj_type/update/:id([0-9a-z]+)',(req,res,next)=>{
 	crud.update(
 		req.params.obj_type,
 		{_id: crud.ObjectID(req.params.id)},
-		req.body,
+		Object.assign({
+			modify_time: new Date()
+		}, req.body),
 		(result_map)=>{
 			res.send({
 				status: 200,
